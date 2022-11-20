@@ -1,0 +1,80 @@
+{% extends 'layout/base.html.twig' %}
+{% block head %}
+    <link href="{{ theme.getStylesheets('blog.css') }}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+{% block content %}
+    <div class="blog-page">
+        <div class="blog-header">
+            <div class="container">
+                {% if keywords is not empty %}
+                    <h1>Résultats pour la recherche : {{ keywords }}</h1>
+                {% elseif term is defined %}
+                    <h1>{{ term.getTitle() }}</h1>
+                {% elseif isAuthor %}
+                    <h1>Les derniers articles de {{ currentObject.user.display_name }}</h1>
+                {% else %}
+                    <h1>Les derniers articles</h1>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container page-content">
+            <div class="post-list-container">
+                <div class="list">
+                    {% for aPost in allPosts %}
+                        {% include 'partials/post/blog-card.html.twig' with {'hasAnimation': true} %}
+                    {% endfor %}
+                    {{ pagination|raw }}
+                    <div class="infinite-scroll-next">
+                        {{ fn('get_next_posts_link')|raw }}
+                    </div>
+                </div>
+                <div class="infinite-page-status">
+                    <p class="infinite-scroll-request">Chargement...</p>
+                    <p class="infinite-scroll-last">Tous les articles ont été chargés.</p>
+                    <p class="infinite-scroll-error">Une erreur est survenue.</p>
+                </div>
+                <noscript>
+                    <style>
+                      .blog-card.has-animation .inner-wrap {
+                        opacity: 1;
+                        transform: none;
+                      }
+                    </style>
+                </noscript>
+            </div>
+            <aside class="sidebar">
+                <div class="sidebar__content">
+                    <div class="sidebar__module last-project">
+                        <p class="module__title">Les derniers projets</p>
+                        <div class="module__content">
+                            <a href="https://github.com/Amorfx" rel="noopener nofollow" target="_blank" class="button is-black is-small">
+                                Voir mes projets sur github
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar__module twitch-live">
+                        <p class="module__title">
+                            {% if (isLive()) %}
+                            Live en cours
+                            {% else %}
+                            Retrouvez moi sur twitch
+                            {% endif %}
+                        </p>
+                        <div class="module__content">
+                            <a rel="noopener nofollow" target="_blank" class="button is-twitch is-small" href="https://twitch.tv/amorfx">
+                                {% if (isLive()) %}
+                                Voir le live twitch
+                                {% else %}
+                                Voir sur twitch
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script type="application/javascript" defer="defer" src="{{ theme.getJavascript('blog.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,99 @@
+.presentation-container {
+  @include desktop {
+    transition: opacity cubic-bezier(.18,.37,.47,1) 700ms,
+    transform cubic-bezier(.18,.37,.47,1) 700ms;
+    opacity: 0;
+    transform: translateX(-45px);
+
+    &.animate {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  h1 {
+    max-width: 700px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    line-height: 59px;
+    font-weight: $font-bold;
+  }
+
+  .presentation--subtext {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: $font-regular;
+
+    .subtext--wrap {
+      position: relative;
+
+      &:hover .arrow:before {
+        transform: scale(1,1) translateX(9px) rotate(90deg);
+      }
+      &:hover .arrow:after {
+        transform: scale(1,1) translateX(9px);
+      }
+
+      &:hover a:after {
+        transform: scale(.8);
+        opacity: 0;
+      }
+    }
+
+    a {
+      padding-right: 36px;
+      &:after {
+        border-radius: 100px;
+        border: 1px solid rgba(0,0,0,.3);
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -14px;
+        content: ' ';
+        display: block;
+        pointer-events: none;
+        transition: all .33s cubic-bezier(.12,.75,.4,1);
+      }
+    }
+
+    .arrow:after {
+      position: absolute;
+      content: '';
+      border-bottom: 1px solid #000;
+      height: 1px;
+      width: 22px;
+      right: 12px;
+      top: 50%;
+      margin-top: -2px;
+      transform: scale(0,1) translateX(0);
+      transform-origin: left;
+      pointer-events: none;
+      transition: all .33s cubic-bezier(.12,.75,.4,1);
+    }
+
+    .arrow:before {
+      font-family: 'icomoon';
+      font-weight: $font-regular;
+      font-style: normal;
+      text-decoration: inherit;
+      backface-visibility: hidden;
+      -webkit-font-smoothing: antialiased;
+      content: "\ea50";
+      color: $black;
+      line-height: 30px;
+      font-size: 15px;
+      position: absolute;
+      right: 3px;
+      width: 26px;
+      text-align: center;
+      height: 30px;
+      top: 50%;
+      margin-top: -16px;
+      transition: all .33s cubic-bezier(.12,.75,.4,1);
+      transform: rotate(90deg);
+    }
+  }
+}

@@ -1,0 +1,88 @@
+header {
+  .header-outer {
+    background: rgba(255,255,255,.96);
+    position: fixed;
+    z-index: 11;
+    width: 100%;
+    transition: background-color .3s ease 0s,box-shadow .3s ease 0s,margin .25s ease;
+  }
+
+  .menu-container {
+    margin-left: auto;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .header--logo {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: $font-medium;
+    letter-spacing: -1px;
+    font-size: 22px;
+  }
+
+  .header--menu nav ul li a {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    margin-left: 41px;
+    margin-right: 41px;
+    position: relative;
+
+    @include link-bar;
+  }
+
+  .header--rs li > div {
+    position: relative;
+  }
+
+  .header--rs a {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 36px;
+
+    &.is-active .icon-twitch {
+      color: $twitchColor;
+    }
+  }
+
+  &.dark {
+    .header-outer {
+      background: transparent;
+    }
+
+    .header--logo a, .header--menu nav ul li a, .header--rs a, .header--search-button {
+      color: $white;
+    }
+
+    .header--menu nav ul li a, .header--rs a, .header--search-buttwon {
+      opacity: .75;
+      transition: opacity .2s ease,color .2s ease;
+
+      &:hover, &.active {
+        opacity: 1;
+      }
+      &:after {
+        border-top: 2px solid $white;
+      }
+    }
+  }
+
+  .header--search-button {
+    cursor: pointer;
+  }
+
+  @include touch {
+    .header--menu, .header--rs {
+      display: none;
+    }
+  }
+}
+.menu-toggle {
+  cursor: pointer;
+}

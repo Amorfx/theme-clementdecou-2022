@@ -1,0 +1,19 @@
+#wpdcom .wpd-blog-post_author .wpd-comment-author, #wpdcom .wpd-blog-post_author .wpd-comment-author a {
+  color: $black-bis;
+}
+
+#wpdcom .wpd-blog-post_author .wpd-comment-label {
+  background-color: $black-bis;
+}
+
+#wpdcom.wpd-layout-1 .wpd-comment .wpd-blog-post_author .wpd-avatar img {
+  border-color: $black-bis;
+}
+
+@include touch {
+  #wpdcom {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+}
+

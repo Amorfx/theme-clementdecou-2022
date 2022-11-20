@@ -1,0 +1,4 @@
+services:
+  Theme2022\Api\TokenGenerator:
+    arguments: ['%env(API_SECRET)%']
+    public: true

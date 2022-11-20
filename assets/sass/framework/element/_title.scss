@@ -1,0 +1,43 @@
+h1 {
+  font-family: $roboto;
+  font-size: 90px;
+  line-height: 98px;
+  font-weight: 700;
+  margin-bottom: 7px;
+
+  @include touch {
+    font-size: 50px;
+  }
+}
+
+.blog-header h1 {
+  font-size: 60px;
+  @include touch {
+    font-size: 45px;
+    line-height: 60px;
+  }
+}
+
+.is-title-2 {
+  font-family: $roboto;
+  margin: .5em 0 .4em;
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: $font-bold;
+}
+
+.is-title-3 {
+  font-family: $roboto;
+  margin: .5em 0 .4em;
+  font-size: 1.5rem;
+  line-height: .75rem;
+  font-weight: $font-bold;
+}
+
+.single h2 {
+  @extend .is-title-2;
+}
+
+.single h3 {
+  @extend .is-title-3;
+}

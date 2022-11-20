@@ -1,0 +1,20 @@
+.triangle-container {
+  @include desktop {
+    opacity: 0;
+    transform: rotateX(-50deg) translateY(120px) skewX(-20deg);
+    transition: opacity 1s ease,transform 500ms cubic-bezier(.26,.25,.47,1);
+
+    &.animate {
+      opacity: 1;
+      transform: rotateX(0) translateY(0) skewX(0);
+    }
+  }
+  .triangle-background {
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-bottom: 200px solid rgba(0,0,0,.85);
+    transform: rotate(135deg);
+  }
+}

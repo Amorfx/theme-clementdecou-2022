@@ -1,0 +1,99 @@
+.mobile-slide-menu {
+  background: #0a0000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: 100%;
+  transition: all .7s cubic-bezier(.25,1,.2,1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  transform: translate3d(101%,0,0);
+  padding: 62px;
+  padding-top: 80px;
+
+  ul, div.is-flex {
+    margin-top: auto;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: transform .45s cubic-bezier(.2,.75,.3,1) .22s,opacity .45s cubic-bezier(.2,.75,.3,1) .22s;
+  }
+
+  ul a {
+    color: $white;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: $font-bold;
+  }
+
+  div.is-flex {
+    transition-delay: 350ms;
+    a {
+      opacity: .7;
+      color: $white;
+      transition: opacity .2s ease,color .2s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    div {
+      padding: 0 10px;
+    }
+    div:nth-child(1) {
+      padding-left: 0;
+    }
+
+  }
+
+  &.open {
+    transform: translate3d(0,0,0);
+    ul, div.is-flex {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+}
+.menu-toggle.is-slide {
+  display: none;
+}
+.mobile-slide-menu.open + .menu-toggle.is-slide {
+  display: block;
+  position: fixed;
+  color: $white;
+  z-index: 999;
+}
+.menu-toggle:not(.is-slide) {
+  position: relative;
+  height: 20px;
+}
+.burger {
+  display: block;
+  background: $black;
+  width: 22px;
+  height: 2px;
+  position: relative;
+  top: calc(50% - 1px);
+
+  &:before, &:after {
+    content: '';
+    background: $black;
+    position: absolute;
+    display: block;
+    width: 22px;
+    height: 2px;
+  }
+  &:before {
+    top: 6px;
+  }
+  &:after {
+    bottom: 6px;
+  }
+}
+.dark .burger, .dark .burger:after, .dark .burger:before {
+  background: $white;
+}

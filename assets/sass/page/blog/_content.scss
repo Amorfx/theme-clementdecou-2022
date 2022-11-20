@@ -1,0 +1,38 @@
+.blog-page {
+  .infinite-scroll-next {
+    display: none;
+  }
+  .infinite-page-status {
+    display: none;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .infinite-scroll-last {
+    color: $grey;
+    font-weight: $font-bold;
+  }
+
+  .infinite-scroll-request {
+    color: $black-bis;
+  }
+
+  .page-content {
+    display: flex;
+
+    @include touch {
+      display: block;
+    }
+
+    .post-list-container {
+      width: 74.5%;
+      padding-right: 30px;
+      margin-right: 2%;
+
+      @include touch {
+        width: 100%;
+      }
+    }
+  }
+}
+

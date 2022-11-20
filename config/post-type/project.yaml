@@ -1,0 +1,10 @@
+post_type:
+  project:
+    public: true
+    labels:
+      name: Projets
+      singular_name: Projet
+    supports:
+      - thumbnail
+      - editor
+      - title

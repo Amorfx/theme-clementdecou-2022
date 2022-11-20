@@ -1,0 +1,23 @@
+<div class="header--menu">
+    {% block headerMenu %}
+        <nav>
+            <ul class="is-flex">
+                {% for item in theme.getMenuHeaderItems() %}
+                    <li>
+                        <a href="{{ item.url }}"
+                            {% if item.isCurrent %}
+                                aria-current="page"
+                                class="active"
+                            {% endif %}
+                                {% if isLive() %}
+                                    class="is-active"
+                                {% endif %}
+                        >
+                            {{ item.title }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endblock %}
+</div>

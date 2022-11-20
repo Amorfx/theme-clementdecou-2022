@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="{{ fn('bloginfo', 'charset') }}">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+
+    <!-- TODO change to import in css -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    {{ fn('wp_head') }}
+    {% block head %}
+        <link href="{{ theme.getStylesheets('main.css') }}" rel="stylesheet" type="text/css" media="all">
+    {% endblock %}
+</head>
+<body {{ fn('body_class') }}>
+<header class="{{ theme.getClassHeader() }}">
+    {% include 'partials/header.html.twig' %}
+</header>
+{% block content %}{% endblock %}
+{% include 'partials/footer.html.twig' %}
+<script type="application/javascript" defer="defer" src="{{ theme.getJavascript('main.js') }}"></script>
+{% block footer %}{% endblock %}
+{{ fn('wp_footer') }}
+</body>
+</html>

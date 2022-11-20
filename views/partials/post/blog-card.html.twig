@@ -1,0 +1,32 @@
+<article class="post blog-card{% if hasAnimation %} has-animation{% endif %}{% if hasShadow %} has-shadow{% endif %}{% if isLite %} is-lite{% endif %}">
+    <div class="inner-wrap">
+        <div class="article-content-wrap">
+            <div class="featured-image-wrap">
+                <a href="{{ aPost.getPermalink() }}"><span class="post-featured-img" style="background-image: url({{ aPost.getThumbnailUrl('grid') }});"></span></a>
+            </div>
+            <div class="post-content-wrap">
+                <a class="entire-meta-link" href="{{ aPost.getPermalink() }}"></a>
+                <span class="meta-category">
+                    <a class="web" href="{{ aPost.getMainCategory().getLink() }}">{{ aPost.getMainCategory().getTitle() }}</a>
+                </span>
+                <div class="post-title">
+                    <h3 class="title">
+                        <a href="{{ aPost.getPermalink() }}">{{ aPost.getTitle()|raw }}</a>
+                    </h3>
+                </div>
+                <div class="excerpt">{{ aPost.getChapo()|raw }}</div>
+                {% if removeAuthor != true %}
+                <div class="author-wrap">
+                    <a href="{{ fn('get_author_posts_url', aPost.post.post_author) }}">
+                        <img alt="Clément Décou" src="https://secure.gravatar.com/avatar/6b4bf75c43a88c1b01ac6143d5c11c7f?s=70&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/6b4bf75c43a88c1b01ac6143d5c11c7f?s=140&amp;d=mm&amp;r=g 2x" class="avatar avatar-70 photo" height="70" width="70" loading="lazy">
+                    </a>
+                    <div class="text">
+                        <a href="{{ fn('get_author_posts_url', aPost.post.post_author) }}" rel="author">{{ fn('get_the_author_meta', 'display_name', aPost.post.post_author) }}</a>
+                        <span>{{ aPost.getDate('j M Y')|lower }}</span>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</article>

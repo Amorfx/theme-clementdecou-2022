@@ -1,0 +1,56 @@
+.single__content .page-content {
+  @include desktop {
+    .content {
+      padding: 0 250px 2vw;
+    }
+  }
+  @media screen and (max-width: 1300px) {
+    .content {
+      padding: 0;
+      padding-bottom: 30px;
+    }
+  }
+
+  &.has-sidebar {
+    display: flex;
+
+    @include touch {
+      display: block;
+    }
+
+    .content {
+      width: 74.5%;
+      padding: 0;
+      padding-right: 30px;
+      padding-bottom: 30px;
+      margin-right: 2%;
+
+      @include touch {
+        width: 100%;
+      }
+    }
+  }
+
+  figure {
+    max-width: 100%;
+    margin: 15px auto;
+    position: relative;
+
+    figcaption {
+      max-width: 90%;
+      width: auto;
+      margin-left: 5%;
+      display: inline-block;
+      margin-bottom: 5px;
+      background-color: $white;
+      box-shadow: 0 10px 35px rgba(0,0,0,.1);
+      padding: 10px 15px;
+      top: -30px;
+      position: relative;
+      border-left: 4px solid $black-bis;
+    }
+  }
+}
+.single .page-content figure img {
+  margin-bottom: 0;
+}

@@ -1,0 +1,119 @@
+{% extends 'layout/base.html.twig' %}
+{% block head %}
+    <link href="{{ theme.getStylesheets('home.css') }}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+{% block content %}
+    <div class="container page-content">
+        <div class="columns">
+            <div class="column is-10">
+                <div class="presentation-container">
+                    <div class="presentation--main-text mb-5">
+                        <h1>{{ presentation.mainText }}</h1>
+                    </div>
+                    <div class="presentation--subtext">
+                        {{ presentation.subtext }}
+                        <span class="subtext--wrap">
+                            <a href="{{ presentation['callToAction']['presentation-call-to-action_url'] }}">
+                                {{ presentation['callToAction']['presentation-call-to-action_text'] }}
+                                <span class="arrow"></span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-2 is-hidden-touch">
+                <div class="triangle-container">
+                    <div class="triangle-background"></div>
+                </div>
+            </div>
+        </div>
+        <div class="home-services">
+            <h2>Mes différents services</h2>
+            <div class="columns">
+                {% for aService in services %}
+                    <div class="column">
+                        <div class="service">
+                            <span class="icon-{{ aService['home-services--icon'] }}"></span>
+                            <h3>{{ aService['home-services--title'] }}</h3>
+                            <div class="service--text">
+                                {{ aService['home-services--content'] }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="my-projects">
+            <div class="my-projects--title-section">
+                <h2>Mes projets</h2>
+                <p>Création de site WordPress et Symfony</p>
+            </div>
+        </div>
+        <div class="projects-container">
+            <div class="projects--filters">
+                <ul>
+                    <li>
+                        <span data-filter="*" class="active">Tous</span>
+                    </li>
+                    {% for aFilter in project_tags %}
+                        <li>
+                            <span data-filter=".{{ aFilter.getSlug() }}">{{ aFilter.getTitle() }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="projects">
+                <div class="grid-sizer"></div>
+                {% for aProject in projects %}
+                    {% set gridInfos = aProject.getGridInfos() %}
+                    <div class="project size-{{ gridInfos.gridSize }} {{ aProject.getClassFilterForIsotope()|join(' ') }}">
+                        <div class="project--inner">
+                            <img src="{{ gridInfos.img }}" alt="{{ aProject.getTitle() }}">
+                            <a href="{{ gridInfos.url }}">
+                                <div class="project--info-bg"></div>
+                                <div class="project--info">
+                                    <div class="info--container">
+                                        <p class="project--subtitle">{{ aProject.getHomeSubtitle() }}</p>
+                                        <p class="project--title">{{ aProject.getTitle() }}</p>
+                                        <svg class=next-arrow xmlns=https://www.w3.org/1999/xlink xmlns:xlink=https://www.w3.org/1999/xlink viewBox="0 0 39 12">
+                                            <line class=top x1=23 y1=-0.5 x2=29.5 y2=6.5 stroke=#ffffff; />
+                                            <line class=bottom x1=23 y1=12.5 x2=29.5 y2=5.5 stroke=#ffffff; />
+                                        </svg>
+                                        <span class="line"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="contact-me-row">
+            <div class="row-bg-wrap">
+                <div class="inner-wrap">
+                    <div class="row-bg using-bg-color"></div>
+                </div>
+                <div class="row-bg-overlay"></div>
+            </div>
+            <div class="shape-divider-wrap">
+                <svg class="shape-divider" fill="" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"> <path d="M 0 0 c 0 0 200 50 500 50 s 500 -50 500 -50 v 101 h -1000 v -100 z"></path></svg>
+            </div>
+            <div class="contact-me-element-container">
+                <p>Construisons votre futur projet</p>
+                <p><a href="{{ theme.getLink('/contact') }}" class="button">Me contacter</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script type="application/javascript" defer="defer" src="{{ theme.getJavascript('home.js') }}"></script>
+    <noscript>
+        <style>
+          .home-services>.columns .service span, .home-services>.columns .service h3, .home-services>.columns .service div,
+          .presentation-container, .triangle-container, .home-services h2{
+            opacity: 1;
+            transform: none;
+          }
+        </style>
+    </noscript>
+{% endblock %}

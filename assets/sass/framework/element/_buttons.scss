@@ -1,0 +1,70 @@
+.button {
+  display: inline-block;
+  border-radius: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  color: $white;
+  background-color: transparent;
+  transition: all .2s ease;;
+  padding: 15px 22px;
+
+  &.is-black {
+    letter-spacing: 0;
+    font-size: 16px;
+    font-weight: $font-bold;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    background: $black-bis;
+    transition: all .45s cubic-bezier(.25,1,.33,1);
+
+    &:hover {
+      opacity: .85;
+    }
+  }
+
+  &.is-small {
+    padding: 3px 12px;
+    font-weight: $font-bold;
+  }
+
+  &.is-twitch {
+    color: $twitchColor;
+    font-weight: $font-bold;
+    border-color: $twitchColor;
+  }
+
+  &.is-tag {
+    border-color: rgba(255,255,255,.4);
+    padding: 4px 10px;
+    font-weight: $font-bold;
+    font-family: $roboto;
+
+    &:hover {
+      background-color: $black-bis;
+      border-color: transparent;
+    }
+  }
+}
+
+.button-small {
+  background: $grey-dark;
+  color: $white;
+  font-family: $roboto;
+  font-weight: $font-bold;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 22px;
+  margin-left: 3px;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: all .2s linear;
+  border-radius: 2px;
+
+  &:hover {
+    background: $black-bis;
+  }
+
+  i {
+    margin-right: 5px;
+  }
+}

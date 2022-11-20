@@ -1,0 +1,20 @@
+@mixin link-bar {
+  display: block;
+  position: relative;
+
+  &:after {
+    content: '';
+    transition: transform .3s ease-out,border-color .3s ease-out;
+    position: absolute;
+    display: block;
+    bottom: -6px;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0);
+    border-top: 2px solid $black-bis;
+  }
+
+  &[aria-current]:after, &:hover:after, &.active:after {
+    transform: scaleX(1);
+  }
+}

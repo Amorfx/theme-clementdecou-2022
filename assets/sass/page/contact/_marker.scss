@@ -1,0 +1,62 @@
+.leaflet-marker-icon.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+
+.animated-dot {
+  width: 20px;
+  height: 20px;
+  left: -9px;
+  top: -5px;
+  position: relative;
+
+  div {
+    background: $black-bis;
+  }
+
+  .middle-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 30px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    transform-origin: 50% 50%;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+  }
+
+  .signal {
+    width: 180px;
+    pointer-events: none;
+    height: 180px;
+    border-radius: 200px;
+    position: absolute;
+    left: -80px;
+    top: -80px;
+    opacity: 0;
+    -webkit-animation: animationSignal cubic-bezier(0,.55,.55,1) 2s;
+    animation: animationSignal cubic-bezier(0,.55,.55,1) 2s;
+    transform-origin: 50% 50%;
+    animation-fill-mode: forwards;
+    animation-delay: .78s;
+    animation-iteration-count: infinite;
+  }
+
+  .signal2 {
+    width: 180px;
+    height: 180px;
+    pointer-events: none;
+    border-radius: 200px;
+    position: absolute;
+    left: -80px;
+    top: -80px;
+    opacity: 0;
+    -webkit-animation: animationSignal cubic-bezier(0,.55,.55,1) 2s;
+    animation: animationSignal cubic-bezier(0,.55,.55,1) 2s;
+    transform-origin: 50% 50%;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+  }
+}

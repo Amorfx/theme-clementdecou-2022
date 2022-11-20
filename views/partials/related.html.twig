@@ -1,0 +1,16 @@
+{% if relatedPosts is not empty %}
+    <div class="related-post related-post-wrap">
+        <div class="container">
+            <p class="related-post__title is-title-2">Vous aimerez peut être</p>
+            <div class="related-post__list">
+                <div class="columns">
+                    {% for aRelatedPost in relatedPosts %}
+                        <div class="column is-4">
+                            {% include 'partials/post/blog-card.html.twig' with {'aPost': aRelatedPost, 'removeAuthor': true, 'hasShadow': true, 'isLite': true} only %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

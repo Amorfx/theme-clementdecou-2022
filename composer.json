@@ -1,0 +1,9 @@
+{
+    "name": "clementdecou/clementdecou-2022",
+    "autoload": {
+        "psr-4": {
+            "Theme2022\\": "src/"
+        }
+    },
+    "require": {}
+}

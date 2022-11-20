@@ -1,0 +1,26 @@
+@keyframes rightArrowLineStart {
+  0% {
+    stroke-dashoffset: 30px;
+  }
+  100% {
+    stroke-dashoffset: 40px;
+  }
+}
+
+@keyframes rightArrowLineEnd {
+  0% {
+    stroke-dashoffset: 40px;
+  }
+  100% {
+    stroke-dashoffset: 50px;
+  }
+}
+
+@keyframes portRightLineStart {
+  0% {
+    transform: translateY(-50%) translateX(-25px) scaleX(0);
+  }
+  100% {
+    transform: translateY(-50%) translateX(0px) scaleX(1);
+  }
+}

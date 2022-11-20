@@ -1,0 +1,32 @@
+.single .page-content {
+  font-family: $roboto;
+  font-size: 18px;
+  p {
+    padding-bottom: 27px;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .aligncenter {
+    display: block;
+    margin: 15px auto;
+  }
+
+  img {
+    margin-bottom: 15px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul {
+    margin-left: 30px;
+    margin-bottom: 30px;
+
+    li {
+      list-style: disc;
+      list-style-position: outside;
+    }
+  }
+}

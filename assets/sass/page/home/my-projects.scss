@@ -1,0 +1,195 @@
+.my-projects {
+  font-family: Roboto, serif;
+  padding-top: 100px;
+  padding-bottom: 3em;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  
+  &--title-section {
+    text-align: center;
+    h2 {
+      margin-bottom: .75rem;
+    }
+    p {
+      font-size: 20px;
+      font-weight: $font-bold;
+    }
+  }
+}
+
+.projects-container {
+  padding-bottom: calc(100vw * 0.07);
+  @include mobile {
+    padding-bottom: calc(300vw * 0.07);
+  }
+}
+
+.projects--filters ul {
+  display: flex;
+  font-family: $roboto;
+  font-weight: 500;
+  padding: 33px 0;
+
+  li {
+    margin: 0 10px;
+    cursor: pointer;
+
+    span {
+      color: rgba(0,0,0,.6);
+
+      &.active {
+        color: $black-bis;
+      }
+
+      @include link-bar;
+    }
+  }
+
+  li:first-child {
+    margin-left: 0;
+  }
+}
+
+.projects {
+  margin-left: -10px;
+  margin-right: -10px;
+
+  .grid-sizer {
+    width: 25%;
+  }
+  .project {
+    float: left;
+    padding: 10px;
+
+    &.size-medium {
+      width: 25%;
+      @include desktop {
+        img {
+          height: #{$project__medium-height}px;
+        }
+      }
+
+      @include touch {
+        width: 100%;
+      }
+    }
+    &.size-big {
+      width: 50%;
+      @include desktop {
+        img {
+          height: #{$project__big-height}px;
+        }
+      }
+      @include touch {
+        width: 100%;
+      }
+    }
+
+    img {
+      display: block;
+      width: auto;
+      transition: transform .62s cubic-bezier(.05,.2,.1,1);
+
+      @include touch {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &--inner {
+      position: relative;
+      overflow: hidden;
+    }
+
+    &--info {
+      color: $white;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info--container {
+      margin-top: auto;
+      padding-left: 30px;
+      padding-bottom: 30px;
+      position: relative;
+    }
+
+    &--title {
+      font-size: 24px;
+      font-weight: $font-bold;
+      margin-top: 10px;
+    }
+
+    &--info-bg {
+      background-color: $black;
+      height: 100%;
+      width: 100%;
+      opacity: .25;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity .62s cubic-bezier(.05,.2,.1,1);
+    }
+
+    .next-arrow {
+      position: absolute;
+      backface-visibility: hidden;
+      margin-top: -15px;
+      height: 30px;
+      width: 40px;
+      display: block;
+      right: 60px;
+      left: auto;
+      top: auto;
+      bottom: 27px;
+      transform: translateX(38px);
+
+      line {
+        stroke: $white;
+        stroke-width: 2px;
+        stroke-dasharray: 10px;
+        stroke-dashoffset: 30px;
+      }
+    }
+
+    .line {
+      position: absolute;
+      right: 32px;
+      left: auto;
+      bottom: 40px;
+      top: auto;
+      width: 37px;
+      height: 2px;
+      display: block;
+      background: $white;
+      transform: translateY(-50%) translateX(28px) scaleX(0);
+      transform-origin: right;
+    }
+
+    // transition when hover isotope item
+    &:hover {
+      line {
+        animation: rightArrowLineStart .48s cubic-bezier(.05,.2,.1,1) .12s forwards;
+        stroke-dashoffset: 30px;
+      }
+
+      .line {
+        transform-origin: left;
+        transform: translateY(-50%) translateX(0px) scaleX(1);
+        animation: portRightLineStart .4s;
+      }
+
+      .project--info-bg {
+        opacity: .75;
+      }
+      img {
+        transform: scale(1.11);
+      }
+    }
+  }
+}

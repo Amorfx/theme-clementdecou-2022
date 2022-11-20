@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+@import 'framework/inc';
+@import "fonts/icomoon";
+@import 'partials/menu/header-menu';
+@import 'partials/menu/search';
+@import 'partials/menu/mobile';
+@import 'partials/footer';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 30px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+i {
+  font-family: $roboto;
+  font-style: italic;
+}
+
+.page-content {
+  padding-top: 90px;
+}
+iframe, iframe.iframe-embed {
+  max-width: 100%;
+}

@@ -1,0 +1,8 @@
+*[data-animation-loaded="zoom-out"] {
+  transform: scale(1.11) translateZ(0);
+  transition: 1.25s 0s cubic-bezier(.3,.58,.42,.9);
+
+  &.loaded {
+    transform: scale(1) translateZ(0);
+  }
+}

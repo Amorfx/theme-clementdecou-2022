@@ -1,0 +1,97 @@
+{% extends 'layout/base.html.twig' %}
+{% block head %}
+    <link href="{{ theme.getStylesheets('single.css') }}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+{% block content %}
+    <div class="single-page">
+        <div class="single__header">
+            <div class="header__bg">
+                <div class="header__bg-wrap" data-animation-loaded="zoom-out">
+                    <div class="header__bg" style="background-image: url({{ currentPost.getThumbnailUrl() }});"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="header__content">
+                    <a class="button is-tag" href="{{ currentPost.getMainCategory().getLink() }}">{{ currentPost.getMainCategory().getTitle() }}</a>
+                    <h1>{{ currentPost.getTitle()|raw }}</h1>
+                    <div class="content__meta">
+                        <span class="meta-author">Par <a href="{{ fn('get_the_author_link', currentPost.post.post_author) }}">{{ fn('get_the_author_meta', 'display_name', currentPost.post.post_author) }}</a></span>
+                        <span class="meta-date">{{ currentPost.getDate('j M Y')|lower }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single__content">
+            <div class="container page-content {{ currentPost.displayContentClass() }}">
+                <div class="content">
+                    {{ fn('the_content')|raw }}
+                    {% if postTags|length > 0 %}
+                    <div class="content__tags">
+                        {% for aTag in postTags %}
+                            <a href="{{ aTag.getLink() }}" class="tag button-small">
+                                <i class="icon-hash"></i>
+                                {{ aTag.getTitle() }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% if currentPost.hasSidebar() %}
+                    <aside class="sidebar">
+                        <div class="sidebar__content">
+                            <div class="sidebar__module last-project">
+                                <p class="module__title">Les derniers projets</p>
+                                <div class="module__content">
+                                    <a href="https://github.com/Amorfx" rel="noopener nofollow" target="_blank" class="button is-black is-small">
+                                        Voir mes projets sur github
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="sidebar__module twitch-live">
+                                <p class="module__title">
+                                    {% if (isLive()) %}
+                                        Live en cours
+                                    {% else %}
+                                        Retrouvez moi sur twitch
+                                    {% endif %}
+                                </p>
+                                <div class="module__content">
+                                    <a rel="noopener nofollow" target="_blank" class="button is-twitch is-small" href="https://twitch.tv/amorfx">
+                                        {% if (isLive()) %}
+                                            Voir le live twitch
+                                        {% else %}
+                                            Voir sur twitch
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                {% endif %}
+            </div>
+        </div>
+        {% include 'partials/related.html.twig' with {'relatedPosts': relatedPosts} only %}
+        {% include 'partials/comments.html.twig' %}
+        <div class="social-share">
+            <div class="social-share__main-button">
+                <span>
+                    <i class="icon-share"></i>
+                </span>
+                <div class="social-share__inner">
+                    <a class="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u={{ currentPost.getPermalink()|url_encode }}" title="Partager sur Facebook">
+                        <i class="icon-facebook"></i>
+                    </a>
+                    <a class="twitter-share" href="https://www.twitter.com/share?via=Amorfx3&text={{ currentPost.getTitle() }}&url={{ currentPost.getPermalink()|url_encode }}" title="Partager sur Twitter">
+                        <i class="icon-twitter"></i>
+                    </a>
+                    <a class="linkedin-share" href="https://www.linkedin.com/shareArticle?mini=true&title={{ currentPost.getTitle() }}&url={{ currentPost.getPermalink()|url_encode }}" title="Partager sur Linkedin">
+                        <i class="icon-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script type="application/javascript" defer="defer" src="{{ theme.getJavascript('single.js') }}"></script>
+{% endblock %}

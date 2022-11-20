@@ -1,0 +1,100 @@
+{% extends 'layout/base.html.twig' %}
+{% block head %}
+    <link href="{{ theme.getStylesheets('page.css') }}" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+{% endblock %}
+{% block content %}
+    <div class="container page-content contact">
+        <h1>{{ page_title }}</h1>
+        <div class="page__content">
+            {{ fn('the_content') }}
+        </div>
+    </div>
+  <div style="padding-top: calc(2vw);">
+    <div id="map" style=" height: 500px;"></div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+    <script type="application/javascript" defer="defer" src="{{ theme.getJavascript('single.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script>
+      L.TileLayer.Grayscale = L.TileLayer.extend({
+        options: {
+          quotaRed: 21,
+          quotaGreen: 71,
+          quotaBlue: 8,
+          quotaDividerTune: 0,
+          quotaDivider: function() {
+            return this.quotaRed + this.quotaGreen + this.quotaBlue + this.quotaDividerTune;
+          }
+        },
+
+        initialize: function (url, options) {
+          options = options || {}
+          options.crossOrigin = true;
+          L.TileLayer.prototype.initialize.call(this, url, options);
+
+          this.on('tileload', function(e) {
+            this._makeGrayscale(e.tile);
+          });
+        },
+
+        _createTile: function () {
+          var tile = L.TileLayer.prototype._createTile.call(this);
+          tile.crossOrigin = "Anonymous";
+          return tile;
+        },
+
+        _makeGrayscale: function (img) {
+          if (img.getAttribute('data-grayscaled'))
+            return;
+
+          img.crossOrigin = '';
+          var canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+
+          var imgd = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          var pix = imgd.data;
+          for (var i = 0, n = pix.length; i < n; i += 4) {
+            pix[i] = pix[i + 1] = pix[i + 2] = (this.options.quotaRed * pix[i] + this.options.quotaGreen * pix[i + 1] + this.options.quotaBlue * pix[i + 2]) / this.options.quotaDivider();
+          }
+          ctx.putImageData(imgd, 0, 0);
+          img.setAttribute('data-grayscaled', true);
+          img.src = canvas.toDataURL();
+        }
+      });
+
+      L.tileLayer.grayscale = function (url, options) {
+        return new L.TileLayer.Grayscale(url, options);
+      };
+    </script>
+    <script>
+      var map = L.map('map').setView([46.3274304, -0.4963254], 10);
+      L.tileLayer.grayscale('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors',
+        maxZoom: 14, minZoom: 2
+      }).addTo(map);
+
+      // custom icon
+      customIcon = L.divIcon({
+        html: '<div><div class="animated-dot">' +
+          '<div class="middle-dot"></div>' +
+          '<div class="signal"></div>' +
+          '<div class="signal2"></div>' +
+          '</div></div>'
+      });
+
+      iconObj = { icon: customIcon };
+      var markerLat = 46.3274304;
+      var markerLng = -0.4963254;
+      L.marker([markerLat, markerLng], iconObj).addTo(map);
+    </script>
+{% endblock %}

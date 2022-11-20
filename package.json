@@ -1,0 +1,43 @@
+{
+  "name": "clementdecou-2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "watch": "webpack --watch --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amorfx/clementdecou-2020.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Amorfx/clementdecou-2020/issues"
+  },
+  "homepage": "https://github.com/Amorfx/clementdecou-2020#readme",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "browserify": "^17.0.0",
+    "bulma": "^0.9.2",
+    "imagesloaded": "^4.1.4",
+    "infinite-scroll": "^4.0.1",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@wordpress/browserslist-config": "^5.5.0",
+    "babel-loader": "^9.1.0",
+    "compression-webpack-plugin": "^10.0.0",
+    "css-loader": "^6.7.2",
+    "mini-css-extract-plugin": "^2.7.0",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  }
+}

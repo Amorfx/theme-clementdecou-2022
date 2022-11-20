@@ -1,0 +1,25 @@
+@import 'main';
+@import "page/home/presentation";
+@import "page/home/shapes";
+@import "page/home/my-services";
+@import "page/home/my-projects";
+@import "page/home/contact-me";
+
+.page-content {
+  > .columns {
+    padding-top: 120px;
+  }
+
+  h2 {
+    font-family: Roboto;
+    font-size: 3em;
+    font-weight: $font-bold;
+    text-transform: capitalize;
+
+    @include touch {
+      font-size: 2rem;
+    }
+  }
+}
+
+

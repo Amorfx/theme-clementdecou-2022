@@ -1,0 +1,7 @@
+taxonomy:
+  project_tag:
+    object_type: project
+    args:
+      labels:
+        name: Technologies
+        singular_name: Technologie

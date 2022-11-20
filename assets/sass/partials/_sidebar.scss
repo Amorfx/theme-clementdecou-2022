@@ -1,0 +1,20 @@
+.sidebar {
+  position: relative;
+
+  &__content {
+    position: sticky;
+    top: calc(#{$heightMenu} + 10px);
+  }
+
+  &__module {
+    margin-bottom: 30px;
+    .module__title {
+      font-family: $roboto;
+      margin-bottom: 12px;
+      font-size: 16px;
+      padding-bottom: 0!important;
+      font-weight: $font-bold;
+      color: rgba(0,0,0,.4);
+    }
+  }
+}
