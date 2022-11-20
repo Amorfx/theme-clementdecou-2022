@@ -1,5 +1,6 @@
 {
     "name": "clementdecou/clementdecou-2022",
+    "type": "wordpress-theme",
     "autoload": {
         "psr-4": {
             "Theme2022\\": "src/"
